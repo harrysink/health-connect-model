@@ -1,0 +1,33 @@
+# Configuration file for HealthConnect ML Pipeline
+
+# Data paths
+data_path: "data/HealthConnect_Appointment_Data.csv"
+processed_data_path: "data/processed/appointments_clean.csv"
+
+# Model paths
+logistic_model_path: "models/logistic_regression.pkl"
+random_forest_model_path: "models/random_forest.pkl"
+xgboost_model_path: "models/xgboost.pkl"
+
+# Training parameters
+test_size: 0.2          # 20% of data for testing
+random_state: 42        # reproducibility seed
+
+# Model hyperparameters (baseline)
+logistic_regression:
+  max_iter: 500
+  class_weight: "balanced"
+
+random_forest:
+  n_estimators: 100
+  max_depth: null
+  class_weight: "balanced"
+  random_state: 42
+
+xgboost:
+  n_estimators: 100
+  learning_rate: 0.1
+  max_depth: 6
+  subsample: 0.8
+  colsample_bytree: 0.8
+  random_state: 42
