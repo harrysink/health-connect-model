@@ -35,6 +35,36 @@ README.md                               # Documentation
 
 ---
 
+## Data Management
+**Dataset Location**
+The main dataset used in this project, appointments_clean.csv, is too large to be stored directly in the GitHub repository. To keep the repository lightweight and within GitHub’s file size limits, this file has been added to .gitignore.
+
+**Accessing the Dataset**
+You can download the dataset from Google Drive using the following link:
+
+[Download appointments_clean.csv](https://drive.google.com/file/d/1W5ltutzV-tOoF7vzWj_jIRCI_dDle5Lp/view?usp=sharing)
+
+After downloading, place the file in the /data directory of the repository:
+
+Code
+project-root/
+│
+├── data/
+│   ├── appointments_clean.csv   <-- place file here
+│   └── processed/               <-- processed datasets saved here
+├── models/
+├── src/
+├── config.yaml
+└── requirements.txt
+
+**Notes**
+The dataset is synthetic and anonymized for project purposes.
+
+Scripts (preprocessing.py, train.py, evaluate.py) expect the full dataset to be present in /data.
+
+
+---
+
 ## ⚙️ Setup Instructions
 1. Clone the repository and navigate to the project folder.  
 2. Install dependencies:
