@@ -1,8 +1,8 @@
 # Configuration file for HealthConnect ML Pipeline
 
 # Data paths
-data_path: "data/HealthConnect_Appointment_Data.csv"
-processed_data_path: "data/processed/appointments_clean.csv"
+data_path: "data/raw/Cleaned_Data.csv"
+processed_data_path: "data/processed/processed_dataset.csv"
 
 # Model paths
 logistic_model_path: "models/logistic_regression.pkl"

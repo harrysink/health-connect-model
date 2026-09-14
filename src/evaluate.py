@@ -11,7 +11,8 @@ from sklearn.metrics import (
     recall_score,
     f1_score,
     classification_report,
-    confusion_matrix
+    confusion_matrix,
+    roc_auc_score
 )
 
 # === Load config ===
@@ -40,6 +41,7 @@ X_train, X_test, y_train, y_test = train_test_split(
 models_dir = os.path.join(project_root, "models")
 log_model = joblib.load(os.path.join(models_dir, "logistic_regression.pkl"))
 rf_model = joblib.load(os.path.join(models_dir, "random_forest.pkl"))
+xgb_model = joblib.load(os.path.join(models_dir, "xgboost.pkl"))
 
 def evaluate_model(model, X_test, y_test, name):
     y_pred = model.predict(X_test)
@@ -50,8 +52,15 @@ def evaluate_model(model, X_test, y_test, name):
     print("F1 Score:", f1_score(y_test, y_pred, average="weighted", zero_division=0))
     print("\nClassification Report:\n", classification_report(y_test, y_pred, zero_division=0))
 
-    # Confusion Matrix Plot
+    # ROC-AUC (only if model supports predict_proba)
+    if hasattr(model, "predict_proba"):
+        print("ROC-AUC:", roc_auc_score(y_test, model.predict_proba(X_test)[:,1]))
+
+    # Confusion Matrix + FP/FN counts
     cm = confusion_matrix(y_test, y_pred)
+    tn, fp, fn, tp = cm.ravel()
+    print(f"False Positives: {fp}, False Negatives: {fn}")
+
     plt.figure(figsize=(6, 4))
     sns.heatmap(cm, annot=True, fmt="d", cmap="Blues",
                 xticklabels=model.classes_,
@@ -60,17 +69,16 @@ def evaluate_model(model, X_test, y_test, name):
     plt.xlabel("Predicted")
     plt.ylabel("Actual")
 
-    # Save PNG for reproducibility
     filename = f"{name.lower().replace(' ', '_')}_confusion_matrix.png"
     plt.savefig(filename, bbox_inches="tight")
 
-    # Show inline if running in a notebook
     try:
-        get_ipython()  # will raise NameError if not in notebook
+        get_ipython()
         plt.show()
     except NameError:
         plt.close()
 
-# === Evaluate both models ===
+# === Evaluate all models ===
 evaluate_model(log_model, X_test, y_test, "Logistic Regression")
 evaluate_model(rf_model, X_test, y_test, "Random Forest")
+evaluate_model(xgb_model, X_test, y_test, "XGBoost")

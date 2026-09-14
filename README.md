@@ -131,3 +131,59 @@ Hyperparameter tuning and optimization.
 Feature importance analysis.
 
 Prepare deployment-ready pipeline (API/dashboard integration).
+
+
+---
+
+# HealthConnect ML Engineering - Week 6 Integration Update
+## 🔗 Cross‑Track Collaboration
+- Received:
+
+>1. Cleaned dataset (Cleaned_Data.csv) from the Data Science track (Mercy Koech).
+
+>2. Engineered features: no_show_rate, is_weekend, is_urgent.
+
+>3. Candidate baseline model (Logistic Regression) and recommendations for Random Forest/XGBoost.
+
+- Placed in Repository:
+
+>1. /data/raw/Cleaned_Data.csv → raw input from Data Science track.
+
+>2. /data/processed/processed_dataset.csv → pipeline‑ready dataset after numeric scaling/imputation.
+
+- Provided Back:
+
+>1. Integrated ML pipeline capable of running Logistic Regression, Random Forest, and XGBoost on the cleaned dataset.
+
+>2. Validation outputs (confusion matrices, ROC‑AUC, FP/FN counts).
+
+>3. Updated repository structure and documentation for reproducibility.
+
+## ⚙️ Pipeline Changes
+- Preprocessing now respects engineered features from Data Science track (no duplication).
+
+- Leakage features (reminder_sent, reminder_channel, waiting_time_minutes) removed.
+
+- Class imbalance handled with SMOTE.
+
+- Added XGBoost model training and evaluation.
+
+- Evaluation extended to include ROC‑AUC and error analysis (false positives/negatives).
+
+## 📄 Evidence of Integration
+- Updated config.yaml to point to Mercy’s dataset.
+
+- GitHub commits documenting pipeline changes and integration.
+
+- Confusion matrix PNGs and evaluation logs saved for reproducibility.
+
+- README updated to reflect Week 6 collaboration.
+
+## 🚀 Next Steps (Week 7)
+- Broader testing of integrated pipeline.
+
+- Hyperparameter tuning for Random Forest/XGBoost.
+
+- Feature importance analysis to guide clinic interventions.
+
+- Preparation for deployment‑ready pipeline and dashboard integration.
