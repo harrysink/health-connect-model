@@ -1,0 +1,11 @@
+age,booking_lead_days,previous_appointments,previous_no_shows,distance_to_clinic_km,target,is_female,appointment_type_Follow-up,appointment_type_General Consultation,appointment_type_Specialist Consultation,age_group_25-34,age_group_35-44,age_group_45-54,age_group_55-64,age_group_65+,appointment_time_score,day_num
+39,12,2,0,19.3,1,1.0,True,False,False,False,True,False,False,False,2,1
+31,2,6,0,14.3,0,0.0,False,False,True,True,False,False,False,False,1,4
+50,38,5,1,11.4,1,1.0,False,True,False,False,False,True,False,False,1,2
+59,41,3,1,7.4,0,0.0,True,False,False,False,False,False,True,False,3,3
+34,47,3,1,5.6,1,1.0,True,False,False,True,False,False,False,False,2,0
+66,57,4,2,3.1,1,0.0,False,False,True,False,False,False,False,True,1,1
+58,30,4,1,8.2,1,0.0,False,False,False,False,False,False,True,False,2,6
+28,50,6,1,19.2,0,1.0,False,False,True,True,False,False,False,False,2,4
+77,43,3,0,10.1,1,0.0,True,False,False,False,False,False,False,True,2,0
+20,16,2,0,28.0,0,1.0,True,False,False,False,False,False,False,False,2,4

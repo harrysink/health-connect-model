@@ -1,0 +1,3 @@
+age,booking_lead_days,previous_appointments,previous_no_shows,day_num,appointment_outcome
+twenty,2,1,0,1,1
+thirty,5,2,1,6,0

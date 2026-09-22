@@ -43,15 +43,29 @@ log_model = LogisticRegression(class_weight="balanced", max_iter=500)
 log_model.fit(X_train, y_train)
 joblib.dump(log_model, os.path.join(models_dir, "logistic_regression.pkl"))
 
-# === Train Random Forest ===
-rf_model = RandomForestClassifier(class_weight="balanced", random_state=config["random_state"])
+# === Train Random Forest (tuned) ===
+rf_model = RandomForestClassifier(
+    n_estimators=300,
+    max_depth=10,
+    min_samples_split=10,
+    min_samples_leaf=2,
+    class_weight="balanced",
+    random_state=config["random_state"],
+    n_jobs=-1
+)
 rf_model.fit(X_train, y_train)
 joblib.dump(rf_model, os.path.join(models_dir, "random_forest.pkl"))
 
-# === Train XGBoost ===
+# === Train XGBoost (tuned) ===
 xgb_model = XGBClassifier(
+    n_estimators=200,
+    max_depth=3,
+    learning_rate=0.01,
+    subsample=0.6,
+    colsample_bytree=1.0,
     scale_pos_weight=len(y_train[y_train==0]) / len(y_train[y_train==1]),
-    random_state=config["random_state"]
+    random_state=config["random_state"],
+    n_jobs=-1
 )
 xgb_model.fit(X_train, y_train)
 joblib.dump(xgb_model, os.path.join(models_dir, "xgboost.pkl"))

@@ -3,6 +3,7 @@
 # Data paths
 data_path: "data/raw/Cleaned_Data.csv"
 processed_data_path: "data/processed/processed_dataset.csv"
+pipeline_path: models/preprocessor.pkl
 
 # Model paths
 logistic_model_path: "models/logistic_regression.pkl"
